@@ -1,5 +1,11 @@
 # remark-astro-headings
 
+## 0.0.5
+
+### Patch Changes
+
+- 6b88051: Hopefully fixed types
+
 ## 0.0.4
 
 ### Patch Changes
@@ -10,10 +16,10 @@
 
 ### Patch Changes
 
--   8c79f05: Better types, added readme
+- 8c79f05: Better types, added readme
 
 ## 0.0.2
 
 ### Patch Changes
 
--   2e5f44b: Initted library
+- 2e5f44b: Initted library
