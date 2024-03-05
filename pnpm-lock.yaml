@@ -34,6 +34,9 @@ devDependencies:
     typescript:
         specifier: ^5.3.3
         version: 5.3.3
+    unified:
+        specifier: ^11.0.4
+        version: 11.0.4
 
 packages:
     /@babel/code-frame@7.23.5:
@@ -569,6 +572,13 @@ packages:
             possible-typed-array-names: 1.0.0
         dev: true
 
+    /bail@2.0.2:
+        resolution:
+            {
+                integrity: sha512-0xO6mYd7JB2YesxDKplafRpsiOzPt9V02ddPCLbY1xYGPOX24NTyN50qnUxgCPcSoYMhKpAuBTjQoRZCAkUDRw==,
+            }
+        dev: true
+
     /better-path-resolve@1.0.0:
         resolution:
             {
@@ -1043,6 +1053,13 @@ packages:
             }
         engines: { node: '>=4' }
         hasBin: true
+        dev: true
+
+    /extend@3.0.2:
+        resolution:
+            {
+                integrity: sha512-fjquC59cD7CyW6urNXK0FBufkZcoiGG80wTuPujX590cB5Ttln20E2UB4S/WARVqhXffZl2LNgS+gQdPIIim/g==,
+            }
         dev: true
 
     /extendable-error@0.1.7:
@@ -1539,6 +1556,14 @@ packages:
                 integrity: sha512-yvkRyxmFKEOQ4pNXCmJG5AEQNlXJS5LaONXo5/cLdTZdWvsZ1ioJEonLGAosKlMWE8lwUy/bJzMjcw8az73+Fg==,
             }
         engines: { node: '>=0.10.0' }
+        dev: true
+
+    /is-plain-obj@4.1.0:
+        resolution:
+            {
+                integrity: sha512-+Pgi+vMuUNkJyExiMBt5IlFoMyKnr5zhJ4Uspz58WOhBF5QoIZkFyNHIbBAtHwzVAgk5RtndVNsDRN61/mmDqg==,
+            }
+        engines: { node: '>=12' }
         dev: true
 
     /is-regex@1.1.4:
@@ -2845,6 +2870,13 @@ packages:
         engines: { node: '>=8' }
         dev: true
 
+    /trough@2.2.0:
+        resolution:
+            {
+                integrity: sha512-tmMpK00BjZiUyVyvrBK7knerNgmgvcV/KLVyuma/SC+TQN167GrMRciANTz09+k3zW8L8t60jWO1GpfkZdjTaw==,
+            }
+        dev: true
+
     /tty-table@4.2.3:
         resolution:
             {
@@ -2970,6 +3002,21 @@ packages:
             }
         dev: true
 
+    /unified@11.0.4:
+        resolution:
+            {
+                integrity: sha512-apMPnyLjAX+ty4OrNap7yumyVAMlKx5IWU2wlzzUdYJO9A8f1p9m/gywF/GM2ZDFcjQPrx59Mc90KwmxsoklxQ==,
+            }
+        dependencies:
+            '@types/unist': 3.0.2
+            bail: 2.0.2
+            devlop: 1.1.0
+            extend: 3.0.2
+            is-plain-obj: 4.1.0
+            trough: 2.2.0
+            vfile: 6.0.1
+        dev: true
+
     /unist-util-is@6.0.0:
         resolution:
             {
@@ -3021,6 +3068,27 @@ packages:
         dependencies:
             spdx-correct: 3.2.0
             spdx-expression-parse: 3.0.1
+        dev: true
+
+    /vfile-message@4.0.2:
+        resolution:
+            {
+                integrity: sha512-jRDZ1IMLttGj41KcZvlrYAaI3CfqpLpfpf+Mfig13viT6NKvRzWZ+lXz0Y5D60w6uJIBAOGq9mSHf0gktF0duw==,
+            }
+        dependencies:
+            '@types/unist': 3.0.2
+            unist-util-stringify-position: 4.0.0
+        dev: true
+
+    /vfile@6.0.1:
+        resolution:
+            {
+                integrity: sha512-1bYqc7pt6NIADBJ98UiG0Bn/CHIVOoZ/IyEkqIruLg0mE1BKzkOXY2D6CSqQIcKqgadppE5lrxgWXJmXd7zZJw==,
+            }
+        dependencies:
+            '@types/unist': 3.0.2
+            unist-util-stringify-position: 4.0.0
+            vfile-message: 4.0.2
         dev: true
 
     /wcwidth@1.0.1:

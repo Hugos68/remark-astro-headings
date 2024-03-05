@@ -1,24 +1,13 @@
-import { type Heading, generateHeadings } from './generate-headings.js';
-import type { Root } from 'mdast';
-
-type VFile = {
-	history: string[];
-	data: {
-		astro?: {
-			frontmatter: {
-				headings: Heading[];
-			};
-		};
-	};
-};
+import { generateHeadings } from './generate-headings.js';
+import type { Transformer } from 'unified';
 
 export type Config = {
 	minDepth?: number;
 	maxDepth?: number;
 };
 
-export function remarkAstroHeadings(config: Config = {}) {
-	return function (root: Root, VFile: VFile) {
+export function remarkAstroHeadings(config: Config = {}): Transformer {
+	return function (root, VFile) {
 		const filePath = VFile.history[0];
 		const headings = generateHeadings(root, {
 			minDepth: config.minDepth,
@@ -26,6 +15,7 @@ export function remarkAstroHeadings(config: Config = {}) {
 			filePath,
 		});
 		if (VFile.data.astro) {
+			// @ts-ignore - If `astro` is present then frontmatter is also present
 			VFile.data.astro.frontmatter.headings = headings;
 		}
 	};

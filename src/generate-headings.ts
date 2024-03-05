@@ -1,15 +1,14 @@
 /// <reference types="mdast-util-mdxjs-esm" />
-
 import GithubSlugger from 'github-slugger';
 import { visit } from 'unist-util-visit';
-import type { Root } from 'mdast';
+import type { Node, Root } from 'mdast';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fromMarkdown } from 'mdast-util-from-markdown';
 
 const IMPORT_PATH_REGEX = /from\s+['"]([^'"]+)['"]/;
 
-export type Heading = {
+type Heading = {
 	depth: number;
 	content: string;
 	slug: string;
@@ -24,7 +23,7 @@ type Config = {
 };
 
 export function generateHeadings(
-	root: Root,
+	root: Node,
 	{
 		minDepth = 2, // By default skip titles (# / h1)
 		maxDepth = 6,
@@ -33,7 +32,7 @@ export function generateHeadings(
 		headings = [],
 	}: Config,
 ) {
-	visit(root, null, (child) => {
+	visit(root as Root, null, (child) => {
 		if (child.type === 'heading') {
 			const depth = child.depth;
 			const content = 'value' in child.children[0] && child.children[0].value;
