@@ -1,9 +1,12 @@
-import GithubSlugger from "github-slugger";
-import { visit } from "unist-util-visit";
-import type { Root } from "mdast";
-import { readFileSync } from "node:fs";
-import { join } from "node:path";
-import { fromMarkdown } from "mdast-util-from-markdown";
+import GithubSlugger from 'github-slugger';
+import { visit } from 'unist-util-visit';
+import type { Root } from 'mdast';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import { fromMarkdown } from 'mdast-util-from-markdown';
+import { mdxjsEsmFromMarkdown } from 'mdast-util-mdxjs-esm';
+
+mdxjsEsmFromMarkdown();
 
 const IMPORT_PATH_REGEX = /from\s+['"]([^'"]+)['"]/;
 
@@ -24,39 +27,31 @@ type Config = {
 export function generateHeadings(
 	root: Root,
 	{
-		minDepth = 2,
+		minDepth = 2, // By default skip titles (# / h1)
 		maxDepth = 6,
 		filePath,
 		slugger = new GithubSlugger(),
 		headings = [],
 	}: Config,
 ) {
-	visit(root, ["heading", "mdxjsEsm"], (child) => {
-		if (child.type === "heading") {
+	visit(root, null, (child) => {
+		if (child.type === 'heading') {
 			const depth = child.depth;
-			if (depth < minDepth || depth > maxDepth) {
+			const content = 'value' in child.children[0] && child.children[0].value;
+			if (depth < minDepth || depth > maxDepth || !content) {
 				return;
 			}
-			const content =
-				"value" in child.children[0]
-					? child.children[0].value
-					: "";
 			const slug = slugger.slug(content);
 			headings.push({
 				depth,
 				content,
 				slug,
 			});
-			// @ts-ignore - mdxjsEsm is not in the unist type
-		} else if (child.type === "mdxjsEsm") {
-			// @ts-ignore - mdxjsEsm is not in the unist type
+		} else if (child.type === 'mdxjsEsm') {
 			const match = child.value.match(IMPORT_PATH_REGEX);
 			if (match) {
-				const path = match[1];
-				const file = readFileSync(
-					join(filePath, "..", path),
-					"utf-8",
-				);
+				const importPath = match[1];
+				const file = readFileSync(join(filePath, '..', importPath), 'utf-8');
 				const ast = fromMarkdown(file);
 				generateHeadings(ast, {
 					minDepth,

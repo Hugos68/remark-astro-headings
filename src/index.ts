@@ -1,6 +1,5 @@
-import GithubSlugger from "github-slugger";
-import type { Root } from "mdast";
-import { type Heading, generateHeadings } from "./generate-headings.js";
+import { type Heading, generateHeadings } from './generate-headings.js';
+import type { Root } from 'mdast';
 
 type VFile = {
 	history: string[];
@@ -20,13 +19,11 @@ export type Config = {
 
 export function remarkAstroHeadings(config: Config = {}) {
 	return function (root: Root, VFile: VFile) {
-		const slugger = new GithubSlugger();
 		const filePath = VFile.history[0];
 		const headings = generateHeadings(root, {
 			minDepth: config.minDepth,
 			maxDepth: config.maxDepth,
 			filePath,
-			slugger,
 		});
 		if (VFile.data.astro) {
 			VFile.data.astro.frontmatter.headings = headings;

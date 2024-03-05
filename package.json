@@ -1,26 +1,36 @@
 {
-  "name": "remark-astro-headings",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "dev": "tsc -w",
-    "build": "tsc"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "github-slugger": "^2.0.0",
-    "mdast-util-from-markdown": "^2.0.0",
-    "unist-util-visit": "^5.0.0"
-  },
-  "devDependencies": {
-    "@types/mdast": "^4.0.3",
-    "@types/node": "^20.11.24",
-    "mdast-util-mdxjs-esm": "^2.0.1",
-    "typescript": "^5.3.3",
-    "unified": "^11.0.4"
-  },
-  "type": "module"
+	"name": "remark-astro-headings",
+	"version": "0.0.1",
+	"description": "",
+	"main": "dist/index.js",
+	"publishConfig": {
+		"access": "public"
+	},
+	"scripts": {
+		"dev": "tsc -w",
+		"build": "tsc",
+		"format": "prettier --write .",
+		"release": "pnpm run build && changeset publish"
+	},
+	"keywords": [
+		"Astro",
+		"Remark",
+		"MDX"
+	],
+	"author": "Hugo Korte",
+	"license": "MIT",
+	"dependencies": {
+		"github-slugger": "^2.0.0",
+		"mdast-util-from-markdown": "^2.0.0",
+		"unist-util-visit": "^5.0.0"
+	},
+	"devDependencies": {
+		"@changesets/cli": "^2.27.1",
+		"@types/mdast": "^4.0.3",
+		"@types/node": "^20.11.24",
+		"mdast-util-mdxjs-esm": "^2.0.1",
+		"prettier": "^3.2.5",
+		"typescript": "^5.3.3"
+	},
+	"type": "module"
 }
