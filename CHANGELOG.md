@@ -1,5 +1,11 @@
 # remark-astro-headings
 
+## 0.0.6
+
+### Patch Changes
+
+- 9e00f86: Only added dist files to package
+
 ## 0.0.5
 
 ### Patch Changes
