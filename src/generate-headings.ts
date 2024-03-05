@@ -1,12 +1,11 @@
+/// <reference types="mdast-util-mdxjs-esm" />
+
 import GithubSlugger from 'github-slugger';
 import { visit } from 'unist-util-visit';
 import type { Root } from 'mdast';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fromMarkdown } from 'mdast-util-from-markdown';
-import { mdxjsEsmFromMarkdown } from 'mdast-util-mdxjs-esm';
-
-mdxjsEsmFromMarkdown();
 
 const IMPORT_PATH_REGEX = /from\s+['"]([^'"]+)['"]/;
 

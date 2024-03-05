@@ -1,0 +1,23 @@
+= remark-astro-headings
+
+A plugin for extracting headings out of MDX files and adding them to the frontmatter.
+
+== Install
+
+```sh
+pnpm add remark-astro-headings
+```
+
+== Usage
+
+```js
+import { remarkAstroHeadings } from 'remarkAstroHeadings';
+
+export default defineConfig({
+    integrations: [
+        mdx({
+            remarkPlugins: [remarkAstroHeadings],
+        }),
+    ],
+});
+```
