@@ -1,8 +1,12 @@
 {
 	"name": "remark-astro-headings",
 	"version": "0.0.3",
-	"description": "",
+	"description": "A plugin for extracting headings out of MDX files and adding them to the frontmatter.",
 	"main": "dist/index.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Hugos68/remark-astro-headings"
+	},
 	"publishConfig": {
 		"access": "public"
 	},
