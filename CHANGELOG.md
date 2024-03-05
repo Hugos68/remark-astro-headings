@@ -1,5 +1,11 @@
 # remark-astro-headings
 
+## 0.0.4
+
+### Patch Changes
+
+- 2d7e1fa: Added repository to package
+
 ## 0.0.3
 
 ### Patch Changes
