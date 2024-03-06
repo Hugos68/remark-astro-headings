@@ -32,7 +32,7 @@ export function generateHeadings(
 		headings = [],
 	}: Config,
 ) {
-	visit(root as Root, null, (child) => {
+	visit(root as Root, ['heading', 'mdxjsEsm'], (child) => {
 		if (child.type === 'heading') {
 			const depth = child.depth;
 			const content = 'value' in child.children[0] && child.children[0].value;
