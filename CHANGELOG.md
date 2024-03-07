@@ -1,5 +1,11 @@
 # remark-astro-headings
 
+## 0.0.8
+
+### Patch Changes
+
+- ffa4bae: Added createSlugger for custom slugging, improved readability
+
 ## 0.0.7
 
 ### Patch Changes
