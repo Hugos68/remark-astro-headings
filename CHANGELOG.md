@@ -1,5 +1,11 @@
 # remark-astro-headings
 
+## 0.0.9
+
+### Patch Changes
+
+- 5f0ebca: Testing with extensions
+
 ## 0.0.8
 
 ### Patch Changes
