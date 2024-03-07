@@ -6,6 +6,8 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fromMarkdown } from 'mdast-util-from-markdown';
 import { Transformer } from 'unified';
+import { mdxjs } from 'micromark-extension-mdxjs';
+import { mdxFromMarkdown } from 'mdast-util-mdx';
 
 const IMPORT_PATH_REGEX = /from\s+['"]([^'"]+)['"]/;
 
@@ -74,7 +76,10 @@ function visitDeeply(root: Root, config: VisitRecursivelyConfig) {
 				}
 				const importPath = match[1];
 				const file = readFileSync(join(config.dir, importPath), 'utf-8');
-				const root = fromMarkdown(file);
+				const root = fromMarkdown(file, {
+					extensions: [mdxjs()],
+					mdastExtensions: [mdxFromMarkdown()],
+				});
 				visitDeeply(root, config);
 				break;
 			}
